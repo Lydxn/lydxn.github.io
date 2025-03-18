@@ -8,6 +8,6 @@ Hey! This is just a test post. Maybe I'll have cool stuff to put on here someday
 
 For now, here's a *Hello, World!* program in Brainfuck:
 
-{{<code language="bf" title="hello" open="true">}}
+{{<code language="bf" open="true">}}
 +[-->-[>>+>-----<<]<--<---]>-.>>>+.>>..+++[.>]<<<<.+++.------.<<-.>>>>+.
 {{</code>}}
