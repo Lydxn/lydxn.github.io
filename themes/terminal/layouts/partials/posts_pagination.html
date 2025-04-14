@@ -7,7 +7,7 @@
   <div class="pagination__buttons">
     {{ if .NextInSection }}
       <a href="{{ .NextInSection.Permalink }}" class="button inline prev">
-        &lt; [<span class="button__text">{{ .NextInSection.Title }}</span>]
+        &lt;&nbsp; <span class="button__text">{{ .NextInSection.Title }}</span>
       </a>
     {{ end }}
     {{ if and .NextInSection .PrevInSection }}
@@ -15,7 +15,7 @@
     {{ end }}
     {{ if .PrevInSection }}
       <a href="{{ .PrevInSection.Permalink }}" class="button inline next">
-         [<span class="button__text">{{ .PrevInSection.Title }}</span>] &gt;
+        <span class="button__text">{{ .PrevInSection.Title }}</span> &nbsp;&gt;
       </a>
     {{ end }}
   </div>

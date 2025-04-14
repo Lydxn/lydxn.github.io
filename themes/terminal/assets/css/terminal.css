@@ -2,7 +2,7 @@
 @import url('https://cdn.staticdelivr.com/gfonts/css2?family=Fira+Code:wght@300..700&display=swap');
 
 :root {
-  --background: #2e2323;
+  --background: #302b2b;
   --foreground: #eceae5;
   --accent: #fe5858;
   --radius: 0;
@@ -205,8 +205,7 @@ input[type="radio"]:checked {
 img {
   display: block;
   max-width: 100%;
-  border: 8px solid var(--accent);
-  border-radius: var(--radius);
+  border: none;
   padding: 8px;
   overflow: hidden;
 }
