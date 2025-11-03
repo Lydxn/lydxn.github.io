@@ -216,12 +216,13 @@ figure video {
 }
 
 figure figcaption {
-  background: var(--accent);
-  color: var(--background);
+  background: var(--background);
+  color: var(--foreground);
   text-align: center;
-  font-size: 1em;
+  font-size: .75em;
+  font-style: italic;
   font-weight: normal;
-  margin-top: -8px;
+  margin-top: 0px;
   border-radius: 0 0 var(--radius) var(--radius);
 }
 
