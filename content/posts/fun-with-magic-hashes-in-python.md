@@ -146,7 +146,7 @@ Returning to the original problem -- can we apply these ideas of magic hashing t
 
 Unfortunately, the idea falls apart when we have this many inputs. The odds of having
 zero collisions for a perfect hash function across 270 inputs is
-\\( \frac{270}{270^{270}} \approx 2 \cdot 10^{-116} \\), which is vanishingly small. What
+\\( \frac{270!}{270^{270}} \approx 2 \cdot 10^{-116} \\), which is vanishingly small. What
 this means is we should expect to brute force \\( 2 \cdot 10^{116} \\) hash functions
 before finding one that works. Even a near-perfect hash is extremely unlikely due to the
 birthday paradox.
@@ -356,7 +356,7 @@ integer is `sum(b'%r'%g)`, but its input distribution modulo 13 is uneven:
 hist = [24, 30, 18, 24, 21, 21, 25, 14, 19, 24, 15, 22, 13]
 ```
 
-A better approach might be to use `hash('???%r'%g)` and brute force a seed with a better
+A better approach might be to use `hash((*'???%r'%g,))` and brute force a seed with a better
 distribution. But this still seemed too long, so I was clearly missing some other
 trick.
 
@@ -473,6 +473,20 @@ The calculation shows we only need **35** bytes for the seed instead of **39**, 
 # 91b (post mortem)
 p=lambda g:[[hash((*b'`\x16_e\x01L\x16\x07\x170Q\x1f<7M\x1c\x14bK9\x11"`@\x12t\x0fzn!&\x0ca"V%r'[sum(b'\t%r'%g)%33:]%g,))%-3&8]]
 {{</code>}}
+
+### Nov. 13 update
+
+Another 2 byte improvement was found by **@HPWiz**:
+
+{{<code language="py" title="task048.py" open="true">}}
+# 89b (post mortem, HPWiz)
+p=lambda g:[[hash((*(x:=b"S\x10\x13`'yT\x10ZFQ\x13GEb1'\x05\x1bO~\x03V{m\x13\\P~#{\x01w$%r!"%g)[sum(x)%33:],))%-3&8]]
+{{</code>}}
+
+Since we're already using `b'...%r'%g` for the seed string, we can also reuse it in the
+`sum`! The sum will be offset by some constant modulo 33 because of the extra seed
+characters, but if we brute force enough times, the offset will be exactly 0 and
+so we can just do: `(x:=b'...%r'%g)[sum(x)%33:]`.
 
 ## Conclusion
 
