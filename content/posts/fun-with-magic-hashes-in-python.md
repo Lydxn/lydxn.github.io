@@ -115,20 +115,20 @@ The first is a near-perfect hash (with a hole at index 1), while the
 second is a perfect hash. We can use this to construct a **26-byte** magic hash:
 
 ```py
-[41,31,29,56,20,3][x%53%8]
+[41,31,29,56,22,3][x%53%8]
 ```
 
 However, since all values are within ASCII range, we can shorten it to **17 bytes** by
 replacing the list with a byte string (raw bytes are shown as escapes):
 
 ```py
-b')\x1f\x1d8\x14\x03'[x%53%8]
+b')\x1f\x1d8\x16\x03'[x%53%8]
 ```
 
 Alternatively, a bitmask lookup table works but ends up longer at **23 bytes**:
 
 ```py
-3571570665>>x%53%8*6&63
+3605125097>>x%53%8*6&63
 ```
 
 These are the most common forms of a magic hash: combining a *modulo chain* with a lookup
